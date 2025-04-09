@@ -2,6 +2,7 @@
   padding: 0px !important;
   margin: 0px !important;
   box-sizing: border-box !important;
+  scrollbar-width: thin;
 }
 
 :root{
