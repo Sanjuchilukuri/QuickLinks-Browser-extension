@@ -16,7 +16,6 @@ function App() {
 
   const {currentTheme} = UseTheme();
   const {isAuthenticated, AuthenticateWithGithub, continueWithoutLogin} = UseAuth();
-  
 
   return (
     <>

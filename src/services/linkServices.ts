@@ -3,26 +3,37 @@ import { ILinkItem } from '../interfaces/ILinkItem';
 import { Supabase } from '../constants';
 
 export const addLink = async (linkItem: ILinkItem) => {
-  const { data, error } = await supabase
+  alert("Hello");
+   const { error } = await supabase
     .from(Supabase.TableName) 
     .insert([linkItem]);
-
-  if (error) throw error;
-  return data;
+  
+  if (error)
+  { 
+    alert(JSON.stringify(error, null, 2));
+    throw error
+  };
+  
 };
 
 
-export const getAllLinks = async (): Promise<ILinkItem[]> => {
+export const getAllLinks = async (userEmail:string): Promise<ILinkItem[]> => {
+  
   const { data, error } = await supabase
     .from(Supabase.TableName)
-    .select('*');
+    .select('*')
+    .eq('userEmail', userEmail); ;
 
-  if (error) throw error;
+  if (error)
+  { 
+    // alert(JSON.stringify(error, null, 2));
+    throw error
+  };
   return data as ILinkItem[];
 };
 
 
-export const updateLink = async (id: number, updatedData: Partial<ILinkItem>) => {
+export const updateLink = async (id: string, updatedData: Partial<ILinkItem>) => {
   const { data, error } = await supabase
     .from(Supabase.TableName)
     .update(updatedData)
@@ -33,7 +44,7 @@ export const updateLink = async (id: number, updatedData: Partial<ILinkItem>) =>
 };
 
 
-export const deleteLink = async (id: number) => {
+export const deleteLink = async (id: string) => {
   const { data, error } = await supabase
     .from(Supabase.TableName)
     .delete()

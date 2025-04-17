@@ -2,6 +2,7 @@ import QuickAction from "../quickAction/QuickAction"
 import { PiCopySimpleBold } from "react-icons/pi";
 import { MdOpenInNew } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
+import UseLinks from "../../Hooks/UseLinks";
 
 interface ILinkProps{
     Id:string,
@@ -10,6 +11,17 @@ interface ILinkProps{
 }
 
 function Link(props:ILinkProps) {
+
+  const {deleteLink} = UseLinks();
+  
+  const copyToClipboard = async () => {
+      await navigator.clipboard.writeText(props.Url);
+  };
+
+  const openInNewTab = () => {
+    chrome.tabs.create({ url: props.Url });
+  };
+
   return (
     <div className="border border-start-0 border-end-0 border-bottom-0  mt-1" >
         <div className="mx-3 d-flex justify-content-between p-1 align-items-center ">
@@ -19,21 +31,21 @@ function Link(props:ILinkProps) {
             </div>
             <div className="d-flex gap-2">
                 <QuickAction 
-                    Action={() => {}} 
+                    Action={() => {copyToClipboard()}} 
                     tooltip={"Copy"} 
                     image={
                         <PiCopySimpleBold className="text-secondary fs-6"/>
                     }
                 />
                 <QuickAction 
-                    Action={() => {}} 
+                    Action={() => {openInNewTab()}} 
                     tooltip={"Open"} 
                     image={
                         <MdOpenInNew className="text-secondary fs-6"/>
                     }
                 />
                 <QuickAction 
-                    Action={() => {}} 
+                    Action={() => {deleteLink(props.Id)}} 
                     tooltip={"Delete"} 
                     image={
                         <AiOutlineDelete className="text-secondary fs-6"/>

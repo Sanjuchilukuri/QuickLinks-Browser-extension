@@ -8,3 +8,5 @@ export const Themes = {
     light:"light",
     dark:"dark"
 }
+
+export const STORAGE_KEY = 'quickLinks';

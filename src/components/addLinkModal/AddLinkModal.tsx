@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { ILinkItem } from "../../interfaces/ILinkItem"
-import { addLink } from "../../services/linkServices";
+import UseAuth from "../../Hooks/UseAuth";
+import UseLinks from "../../Hooks/UseLinks";
 
 type IErrors = {
   [K in keyof ILinkItem]: boolean;
@@ -8,8 +9,11 @@ type IErrors = {
 
 
 function AddLinkModal() {
-
-  const [linkItem, setLinkItem] = useState({} as ILinkItem);
+  
+  const {addLink} = UseLinks();
+  const formCloseBtnRef = useRef<HTMLButtonElement>(null);
+  const {user} = UseAuth();
+  const [linkItem, setLinkItem] = useState({userEmail:user.userEmail} as ILinkItem);
   const [errors, setErrors] = useState({} as IErrors);
 
   const handleTitleUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,8 +33,10 @@ function AddLinkModal() {
   const handleSave = () => {
     if( validateData() )
     {
+      // alert(JSON.stringify(linkItem, null, 2));
       addLink(linkItem);
       setLinkItem({} as ILinkItem);
+      formCloseBtnRef.current?.click();
     }
   }
 
@@ -38,7 +44,8 @@ function AddLinkModal() {
     let isValid = true;
     const newErrors: IErrors = {
       title: false,
-      link: false
+      link: false,
+      userEmail:false
     };
 
     if (!linkItem.title || linkItem.title.trim() === "") {
@@ -107,7 +114,7 @@ function AddLinkModal() {
               </div>
           
               <div className="modal-footer py-2 d-flex gap-2 px-2">
-                <button type="button" className="btn btn-secondary p-1" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-secondary p-1" ref={formCloseBtnRef} data-bs-dismiss="modal">Cancel</button>
                 <button type="button" className="btn btn-primary p-1 px-2" onClick={handleSave}>Save</button>
               </div>
           

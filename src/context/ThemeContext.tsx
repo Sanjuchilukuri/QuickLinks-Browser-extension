@@ -15,11 +15,11 @@ export default function ThemeContextProvider({ children }: { children: ReactNode
   const [currentTheme, SetTheme] = useState(Themes.dark);
 
   useEffect(() => {
-    // chrome.storage?.local.get(["theme"], (result) => {
-    //   if (result.theme) {
-    //     SetTheme(result.theme);
-    //   }
-    // });
+    chrome.storage?.local.get(["theme"], (result) => {
+      if (result.theme) {
+        SetTheme(result.theme);
+      }
+    });
   }, []);
 
 

@@ -6,5 +6,13 @@
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": ["storage", "tabs"]
+  "permissions": ["storage", "tabs", "identity"],
+  "host_permissions": [
+    "https://*.supabase.co/*"
+  ],
+  "oauth2": {
+    "client_id": "Ov23likzIC1F0raezguf",
+    "scopes": ["read:user", "user:email"]
+  },
+  "key":"MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDfxygeAgE7iMy/U0rsUG+3s9H3sjYqn1aRUrMf74Pb2AgCHHmu606resUHuPFu99ieM5F5va4J51n3h+janLdrK8oKKd4XVcDXlQZU/uJ8+vh5sjVn3Xb9tal3B7Kjy7jDbh4z4xPjLdbMjrOq4VlpO9DkmTbTmDfnqmz544Rey+Pg0aOoN/y8T/l2LwiwAVwRJxmMuofK3yKNXKPXmKpySvv+xnIuax/97m04mj7b5SOCIdQxcmG+GJyf5RMa7pT/8+OzPkJNiHfIgmx2sPmhD2PNp3PdneaYolDmVPR75MOpNb7DSF95OT3b98M5PukGMpSPfCevfXlZ4dKJ5HcjAgMBAAECggEARu9kNaLwDhWuxaVbFi7nQwXC9LAuwHMS520eL+zmUP2ZiEXLgtm/bdc0dt621bTGG1wAbOVmMmh+Wdtgwk+0SsouOOuNpbr+rrfkMnQ7il+p/TWy/TI0Qndf+UXc6FQvRO/2rf748mY49U31ASF/DL8z2AsDWK6jZhHdipcHAl8qlMS1hxsNQPrlCK58lsHRmD82zKfGEdKCafIGb28bK/7BiViNaJjza1RO+ebgnxfLHWW3MzejiGf37bfDMI9KxPfq32QignquKmofEiwMdai6xqtN9EfSu9nElgap7pKF2Q2UGBMj6A4WCNTZ23OkgMQ8ic6/AL3PAXSM5Ner0QKBgQD2rx7rcVtzUPHg9gaaRl53Ce2hO/zTfyBG31jbNi3gsH4xGiWa69kN/UOP8z1cO8B/fpEsjC4XBNuiWCWK/N9h2VM8liTfcb2vefjCZKb8NnOOkimH4+iHUDwvXLUfHCN+i58dNoITiZV4mOepR3lyiwhdZlSFLfGXRuIpuG/9cwKBgQDoOpXf2lWyQCfkyXwIMSfopOc6H7OYyLdbVp23JrGhbe6QEznRsceIV1ZIdU52DLuRWUQcUABKpissWgbVIxmA91YlGrVc/D9+/bo6ihLtsKMJUnXpEoXvdq1dHV2P3tvpsRlxIbk6gMpCfL29Vbi4usdFnvtfphq1HHll8ygzkQKBgQCXdSH40NqjTLmVs7iOFFJ/p/rcmeY7PLxmh08ZGITGhdaU80bPfasA6dUHlwK/lHg2T1F3FoJd47+uR4yVb3j/rN1sP4tYHY+nI65WPFJCXHRKvvb81jO4kMzDD5qtBSvN0I/a8dKfiEPbjZX+20F30GFMZz3Rn0nL5duKXhF0fQKBgGkHVhFP5cIgUeqfVYE++hW1vv4CqG9JF+QvYFUdIuknluWCTHwSM3PuTA+pPjsVtx8diDhl1jvsu0nrzXtHzJkPQ960HaJYUz9T8Y3YNIdbg+ELclhfEEQlIHMkfNQ8rqkad6862VMkPFWlpQqkYk7p6oYKSRYRQbL3ldAOEPiBAoGBANbxF+kQuS3MuGiBg8v86lTj411Fs2eklDmjbOgkZth54x+ka/4RMWjx3L+i/p2eQfWnyqHmCsYl1slgWOHapPhdh2vNesvpghTnCK6FNOij+3sBAQMaeJXwzUVXosEVWYMl3QBJYP4FAInNBIx2gM/Wwm4b0rmRa8Dq/B+Bv/+m"
 }
