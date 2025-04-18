@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ILinkItem } from "../../interfaces/ILinkItem"
 import UseAuth from "../../Hooks/UseAuth";
 import UseLinks from "../../Hooks/UseLinks";
@@ -15,6 +15,17 @@ function AddLinkModal() {
   const {user} = UseAuth();
   const [linkItem, setLinkItem] = useState({userEmail:user.userEmail} as ILinkItem);
   const [errors, setErrors] = useState({} as IErrors);
+
+
+  useEffect(() => {
+    if( user.userEmail )
+    {
+      setLinkItem(prev => ({
+        ...prev,
+        userEmail:user.userEmail
+      }));
+    }
+  },[user.userEmail]);
 
   const handleTitleUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLinkItem(prev => ({

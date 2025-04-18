@@ -19,7 +19,11 @@ function Link(props:ILinkProps) {
   };
 
   const openInNewTab = () => {
-    chrome.tabs.create({ url: props.Url });
+    let url = props.Url;  
+    if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+    }
+    window.open(url, '_blank');
   };
 
   return (

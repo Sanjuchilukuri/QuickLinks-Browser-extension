@@ -42,6 +42,7 @@ export default function AuthContextProvider({children} : {children : ReactNode})
         supabase.auth.getSession().then(({ data }) => {
             if (data.session) {
                 const u = data.session.user;
+                // alert(JSON.stringify(u,null,2));
                 setUser(
                     { 
                         userName: u.user_metadata.full_name || "GitHub User",

@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import { ILinkItem } from "../interfaces/ILinkItem";
 import { useLinkService } from "../services/serviceInterpreter";
+import UseAuth from "../Hooks/UseAuth";
 
 interface ILinksContext {
   allLinks: ILinkItem[];
@@ -8,6 +9,7 @@ interface ILinksContext {
   deleteLink: (id: string) => Promise<void>;
   getAllLinks: () => Promise<void>;
   updateLink: (id: string, updatedData: Partial<ILinkItem>) => Promise<void>;
+  filterLinks:(searchedText:string) => void 
 }
 
 export const LinksContext = createContext({} as ILinksContext);
@@ -19,14 +21,17 @@ interface ILinksProviderProps {
 export function LinksContextProvider({ children }: ILinksProviderProps) {
   const { addLink: serviceAddLink, deleteLink: serviceDeleteLink, getAllLinks: serviceGetAllLinks, updateLink: serviceUpdateLink } = useLinkService();
   const [allLinks, setAllLinks] = useState<ILinkItem[]>([]);
+  const {isAuthenticated} = UseAuth();
 
   const getAllLinks = async () => {
     const links = await serviceGetAllLinks();
     // alert(JSON.stringify(links, null, 2));
+    // alert(JSON.stringify("from get all links", null, 2));
     setAllLinks(links);
   };
 
   const addLink = async (link: ILinkItem) => {
+    // alert(JSON.stringify(link, null, 2));
     await serviceAddLink(link);
     await getAllLinks();
   };
@@ -43,10 +48,24 @@ export function LinksContextProvider({ children }: ILinksProviderProps) {
 
   useEffect(() => {
     getAllLinks();
-  }, []);
+  }, [isAuthenticated]);
+
+  const filterLinks = async (searchedText: string) => {
+    if (searchedText !== "") {
+      let filteredLinks = allLinks.filter(
+        link =>
+          link.title.toLowerCase().includes(searchedText.toLowerCase()) ||
+          link.link.toLowerCase().includes(searchedText.toLowerCase())
+      );
+      setAllLinks(filteredLinks);
+    } else {
+      await getAllLinks();
+    }
+  };
+  
 
   return (
-    <LinksContext.Provider value={{ allLinks, addLink, deleteLink, getAllLinks, updateLink }}>
+    <LinksContext.Provider value={{ allLinks, addLink, deleteLink, getAllLinks, updateLink, filterLinks }}>
       {children}
     </LinksContext.Provider>
   );

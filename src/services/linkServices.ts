@@ -3,14 +3,14 @@ import { ILinkItem } from '../interfaces/ILinkItem';
 import { Supabase } from '../constants';
 
 export const addLink = async (linkItem: ILinkItem) => {
-  alert("Hello");
+  // alert("Hello");
    const { error } = await supabase
     .from(Supabase.TableName) 
     .insert([linkItem]);
   
   if (error)
   { 
-    alert(JSON.stringify(error, null, 2));
+    // alert(JSON.stringify(error, null, 2));
     throw error
   };
   

@@ -7,7 +7,6 @@ import { AuthType } from '../enum';
 export const useLinkService = () => {
     const { isAuthenticated, user, authType } = UseAuth();
 
-
     const addLink = async (link: ILinkItem) => {
         return isAuthenticated && authType == AuthType.Github
             ? SupabaseService.addLink(link)
@@ -15,6 +14,7 @@ export const useLinkService = () => {
     };
 
     const getAllLinks = async (): Promise<ILinkItem[]> => {
+        // alert(JSON.stringify(user, null, 2));
         return isAuthenticated && authType == AuthType.Github
             ? SupabaseService.getAllLinks(user.userEmail)
             : ChromeStorageService.getAllLinks();
