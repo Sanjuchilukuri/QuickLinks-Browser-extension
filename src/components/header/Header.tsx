@@ -23,7 +23,7 @@ function Header() {
               </span>
               {isAuthenticated &&
                 <span className="ms-3">
-                  <span className="text-primary">Hi, {user.userName }</span>
+                  <span className="text-primary text-truncate" title={user.userName}>Hi, {user.userName }</span>
                   <span className="ms-2 fs-4 text-link cursor-pointer" onClick={()=>logOut()}><FiLogOut /></span>
                 </span>
               }
