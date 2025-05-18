@@ -27,13 +27,13 @@ function Link(props:ILinkProps) {
   };
 
   return (
-    <div className="border border-start-0 border-end-0 border-bottom-0  mt-1" >
-        <div className="mx-3 d-flex justify-content-between p-1 align-items-center ">
-            <div>
-                <h5 className="h6 text-primary fw-bold text-truncate" title={props.Title}>{props.Title}</h5>
-                <p className="small text-link text-truncate" title={props.Url}>{props.Url}</p>
+    <div className="border w-100  border-start-0 border-end-0 border-bottom-0 mt-1" >
+        <div className="px-3 w-100 d-flex justify-content-between py-1 align-items-center">
+            <div style={{width:"60%"}}>
+                <h5 className="h6 text-primary fw-bold " style={{wordWrap:"break-word"}} title={props.Title}>{props.Title}</h5>
+                <p className="small text-link " style={{wordWrap:"break-word"}} title={props.Url}>{props.Url}</p>
             </div>
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 justify-content-end">
                 <QuickAction 
                     Action={() => {copyToClipboard()}} 
                     tooltip={"Copy"} 

@@ -20,10 +20,10 @@ function App() {
   return (
     <>
       <div 
-        style={{minWidth:"400px"}} 
+        style={{minWidth:"350px",maxWidth:"400px"}} 
         data-bs-backdrop="false"
         data-theme={currentTheme == Themes.light?Themes.light:Themes.dark}
-        className=" ms-auto vh-100 w-25 py-3  bg-primary position-relative"
+        className=" ms-auto vh-100 py-3  bg-primary position-relative"
       >
         <Header/>
         {isAuthenticated ?
