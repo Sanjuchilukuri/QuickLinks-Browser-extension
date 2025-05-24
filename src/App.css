@@ -59,3 +59,9 @@
 .outline-0{
     outline: none;
 }
+
+.click-effect{
+    &:active{
+        transform: scale(0.9);
+    }
+}
