@@ -20,20 +20,19 @@ function App() {
   return (
     <>
       <div 
-        style={{minWidth:"350px",maxWidth:"400px"}} 
         data-bs-backdrop="false"
         data-theme={currentTheme == Themes.light?Themes.light:Themes.dark}
-        className=" ms-auto vh-100 py-3  bg-primary position-relative"
+        className={`ms-auto vh-100 py-3  bg-primary d-flex flex-column justify-content-between position-relative`}
       >
         <Header/>
         {isAuthenticated ?
-          <>
+          <div className='d-flex flex-column' style={{overflowY:"hidden"}}>
             <QuickAccessBar/>
             <LinksList/>
-          </>
+          </div>
           :
           <>
-            <div className='d-flex flex-column align-items-center my-3'>
+            <div className='d-flex flex-column h-100 align-items-center justify-content-center'>
               <button className=' btn text-white p-2 bg-secondary' onClick={() => AuthenticateWithGithub()}>
                 Authenticate With Github
                 <span className='text-primary fs-4 ms-2'>

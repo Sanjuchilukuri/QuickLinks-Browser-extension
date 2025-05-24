@@ -16,6 +16,12 @@ function AddLinkModal() {
   const [linkItem, setLinkItem] = useState({userEmail:user.userEmail} as ILinkItem);
   const [errors, setErrors] = useState({} as IErrors);
 
+  useEffect(() => {
+    setLinkItem({
+      title:'',
+      link:''
+    } as ILinkItem);
+  },[])
 
   useEffect(() => {
     if( user.userEmail )
@@ -44,11 +50,16 @@ function AddLinkModal() {
   const handleSave = () => {
     if( validateData() )
     {
-      // alert(JSON.stringify(linkItem, null, 2));
       addLink(linkItem);
-      setLinkItem({} as ILinkItem);
       formCloseBtnRef.current?.click();
     }
+  }
+
+  const handleClose = () => {
+    setLinkItem({
+      title:'',
+      link:''
+    } as ILinkItem);
   }
 
   const validateData = (): boolean => {
@@ -125,7 +136,7 @@ function AddLinkModal() {
               </div>
           
               <div className="modal-footer py-2 d-flex gap-2 px-2">
-                <button type="button" className="btn btn-secondary p-1" ref={formCloseBtnRef} data-bs-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-secondary p-1" ref={formCloseBtnRef} data-bs-dismiss="modal" onClick={handleClose}>Cancel</button>
                 <button type="button" className="btn btn-primary p-1 px-2" onClick={handleSave}>Save</button>
               </div>
           

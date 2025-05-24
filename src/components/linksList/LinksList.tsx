@@ -6,7 +6,7 @@ function LinksList() {
   const {allLinks} = UseLinks();
 
   return (
-    <div className="mt-4 w-100" style={{maxHeight:"400px", overflowY:"scroll"}}>
+    <div className="my-2 w-100" style={{overflowY:"scroll"}}>
         {allLinks.map((item) => {
             return <Link Id={item.id!} Title={item.title} Url={item.link}/>
         })}

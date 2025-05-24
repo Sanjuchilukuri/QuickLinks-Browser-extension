@@ -6,7 +6,7 @@ function QuickAccessBar() {
   const {filterLinks} = UseLinks();  
 
   return (
-    <div className="mx-2">
+    <div className="mx-2 mt-2">
       <div className="border mt-2 d-flex p-2 rounded-3 ">
         <input
           type="search"
